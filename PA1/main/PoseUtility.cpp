@@ -42,10 +42,10 @@ int PoseUtility::Run(const string& outputfilename){
 
 int PoseUtility::Error(string errStr, bool checkThrow){
   if(checkThrow){
-    cerr << "Thrown: " << errStr << endl;
+    cerr << "\033[1;31mThrown: \033[0m" << errStr << endl;
     return 1;
   }else{
-    cerr << "\033[1;31mERROR: \033[0m" << errStr << endl;
+    cerr << "\033[1;31mERROR : \033[0m" << errStr << endl;
     return -1;
   }
 }
