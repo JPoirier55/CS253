@@ -24,7 +24,7 @@ public:
   int PopulatePoint3DVect();
   bool SetPoint();
   vector<vector<Point3D>> vectorOfVectors;
-  int Run(PoseDisplay poseDisplay);
+  int Run(const string& outputfilename);
   int Error(string errStr, bool checkThrow=false);
 
 };

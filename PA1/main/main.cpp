@@ -3,9 +3,9 @@
 
 
 int Usage(char* arg0){
-	cout << "Usage: " << arg0 << "<filename> <outputfilename>" << endl;
-	cout << "Where filename contains 75 doubles on each line" << endl;
-	cout << "Where outputfilename can be written to" << endl;
+	cout << "\033[1;37mUsage: \033[0m" << arg0 << " <filename> <outputfilename>" << endl;
+	cout << "-Where filename contains 75 doubles on each line" << endl;
+	cout << "-Where outputfilename can be written to" << endl;
 	return -1;
 }
 
@@ -16,13 +16,11 @@ int main(int argc, char* argv[]){
 	if(istr.fail()) return Usage(argv[0]);
 
 	PoseUtility poseUtil;
-	if(!poseUtil.Read(istr)) return Usage(argv[0]);
 
-	PoseDisplay poseDisplay(argv[2]);
-	if(!poseUtil.Run(poseDisplay)) return Usage(argv[0]);
-
-
-
-
-
+	if(poseUtil.Read(istr) == 1){
+		poseUtil.Run(argv[2]);
+	}else{
+		return -1;
+	}
+	return 1;
 }
