@@ -25,7 +25,7 @@ public:
   bool SetPoint();
   vector<vector<Point3D>> vectorOfVectors;
   int Run(const string& outputfilename);
-  int Error(string errStr, bool checkThrow=false);
+  int Error(string errStr, int lineNum, bool checkThrow=false);
 
 };
 #endif

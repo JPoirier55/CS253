@@ -3,9 +3,9 @@
 
 
 int Usage(char* arg0){
-	cout << "\033[1;37mUsage: \033[0m" << arg0 << " <filename> <outputfilename>" << endl;
-	cout << "-Where filename contains 75 doubles on each line" << endl;
-	cout << "-Where outputfilename can be written to" << endl;
+	cerr << "\033[1;37mUsage: \033[0m" << arg0 << " <filename> <outputfilename>" << endl;
+	cerr << "-Where filename contains 75 doubles on each line" << endl;
+	cerr << "-Where outputfilename can be written to" << endl;
 	return -1;
 }
 
