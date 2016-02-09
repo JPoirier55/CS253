@@ -83,3 +83,91 @@ if [ $? -ne 1 ]; then
 else
   echo "Test Failed"
 fi
+
+echo "First test with excessively large input"
+./PA2 Testing/OtherTests/Excessively_Large.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Second test with excessively small input"
+./PA2 Testing/OtherTests/Excessively_Small.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Third test with Shifted_All_Negative  input"
+./PA2 Testing/OtherTests/Shifted_All_Negative.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Fourth test with Shifted_All  input"
+./PA2 Testing/OtherTests/Shifted_All.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Fifth test with Shifted_Large input"
+./PA2 Testing/OtherTests/Shifted_Large.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Sixth test with Shifted_Small input"
+./PA2 Testing/OtherTests/Shifted_Small.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Seventh test with Shifted_X input"
+./PA2 Testing/OtherTests/Shifted_X.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "Eigth test with Unmoved_Large input"
+./PA2 Testing/OtherTests/Unmoved_Large.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "nnith test with Unmoved_Small input"
+./PA2 Testing/OtherTests/Unmoved_Small.txt output.txt
+if [ $? -eq 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "10th test with no file input"
+./PA2
+if [ $? -ne 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
+
+echo "11th test with wrong file input"
+./PA2 Testing/OtherTests/Excesssssively_Large.txt output.txt
+if [ $? -ne 1 ]; then
+  echo "Test passed"
+else
+  echo "Test Failed"
+fi
