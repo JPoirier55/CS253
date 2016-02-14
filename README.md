@@ -2,10 +2,10 @@
 Homework for CS253
 
 PA1: 
-Reading in text file of 25 points per line
-command : `./PA1 input_example.txt output.txt`
-Taking each point and making a Point3D object
-Creating vector of vectors : `vector<vector<Point3D>>`
+Reading in text file of 25 points per line\n
+command : `./PA1 input_example.txt output.txt`\n
+Taking each point and making a Point3D object\n
+Creating vector of vectors : `vector<vector<Point3D>>`\n
 Reading in text file of 25 points per line
 command : `./PA1 input_example.txt output.txt`
 Taking each point and making a Point3D object
