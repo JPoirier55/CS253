@@ -24,12 +24,14 @@ public:
 
   double x, y, z;
   double xAverage, yAverage, zAverage;
+  double max = -1;
   int lineNumber;
   vector<vector<Point3D>> vectorOfVectors;
 
   int Read(istream& iss);
   int PopulatePoint3DVect();
   int Normalize(vector<vector<Point3D>>& vectorReference);
+  int FindMaxes(vector<vector<Point3D>>& vectorReference);
   int PointAverages(vector<vector<Point3D>>& vectorReference);
 
   int Run(const string& outputfilename);

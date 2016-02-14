@@ -64,8 +64,7 @@ int PoseUtility::PointAverages(vector<vector<Point3D>>& vectorReference){
   return 1;
 }
 
-int PoseUtility::Normalize(vector<vector<Point3D>>& vectorReference){
-  double max = 0;
+int PoseUtility::FindMaxes(vector<vector<Point3D>>& vectorReference){
   for(std::size_t i = 0; i < vectorReference.size(); i ++){
     for(std::size_t j = 0; j < vectorReference[0].size(); j ++){
 
@@ -82,22 +81,30 @@ int PoseUtility::Normalize(vector<vector<Point3D>>& vectorReference){
       if(abs(z) > max){
         max = abs(z);
       }
-      double scaleFactor;
+      vectorReference[i][j] = Point3D(x, y, z);
+    }
+  }
+  return 1;
+}
 
-      if(max == 0.0){
-        scaleFactor = 1;
-      }else{
-        scaleFactor = 1.0 / max;
-      }
+int PoseUtility::Normalize(vector<vector<Point3D>>& vectorReference){
+  double scaleFactor = 0;
 
-      x *= scaleFactor;
-      y *= scaleFactor;
-      z *= scaleFactor;
+  if(max == 0.0){
+    Error("Max value is zero, thus cannot scale: ");
+    return -1;
+  }else{
+  scaleFactor = 1 / max;
+  }
+  for(std::size_t i = 0; i < vectorReference.size(); i ++){
+    for(std::size_t j = 0; j < vectorReference[0].size(); j ++){
+      double x = vectorReference[i][j].X() * scaleFactor;
+      double y = vectorReference[i][j].Y() * scaleFactor;
+      double z = vectorReference[i][j].Z() * scaleFactor;
 
       vectorReference[i][j] = Point3D(x, y, z);
     }
   }
-
   return 1;
 }
 

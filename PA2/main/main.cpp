@@ -19,6 +19,7 @@ int main(int argc, char* argv[]){
 
 	if(poseUtil.Read(istr) == 1){
 		poseUtil.PointAverages(poseUtil.vectorOfVectors);
+		poseUtil.FindMaxes(poseUtil.vectorOfVectors);
 		poseUtil.Normalize(poseUtil.vectorOfVectors);
 		poseUtil.Run(argv[2]);
 	}else{
