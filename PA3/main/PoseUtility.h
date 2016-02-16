@@ -25,8 +25,10 @@ public:
   double x, y, z;
   double xAverage, yAverage, zAverage;
   double max = -1;
+  double sumAv = 0;
   int lineNumber;
   vector<vector<Point3D>> vectorOfVectors;
+  vector<double> distMagVector;
 
   int Read(istream& iss);
   int PopulatePoint3DVect();
@@ -35,7 +37,7 @@ public:
   int PointAverages(vector<vector<Point3D>>& vectorReference);
   int DistMagOutput(vector<vector<Point3D>>& vectorReference);
 
-  int WriteOutput(vector<double>& distMagVector);
+  int WriteOutput(vector<double>& distMagVectorReference, char *outputfilename);
   int Run(const string& outputfilename);
   int Error(string errStr, int lineNum=0, bool checkThrow=false);
 

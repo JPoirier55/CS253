@@ -1,6 +1,7 @@
 
 #include <PoseUtility.h>
 #include <cmath>
+#include <math.h>
 using std::abs;
 
 int PoseUtility::Read(istream& iss)
@@ -118,8 +119,32 @@ int PoseUtility::Run(const string& outputfilename){
   return 1;
 }
 
-int PoseUtility::DistMagOutput(vector<double>& distMagVector){
+int PoseUtility::DistMagOutput(vector<vector<Point3D>>& vectorReference){
 
+  if(vectorReference.size() < 2){
+    Error("The file is too small to complete magnitude: ");
+    return -1;
+  }
+
+  for(std::size_t i = 1; i < vectorReference.size(); i ++){
+    double overallSum = 0;
+    for(std::size_t j = 0; j < vectorReference[0].size(); j ++){
+      double xMag = pow(vectorReference[i][j].X() - vectorReference[i-1][j].X(), 2);
+      double yMag = pow(vectorReference[i][j].Y() - vectorReference[i-1][j].Y(), 2);
+      double zMag = pow(vectorReference[i][j].Z() - vectorReference[i-1][j].Z(), 2);
+      overallSum += sqrt(xMag + yMag + zMag);
+    }
+    distMagVector.push_back(overallSum);
+  }
+  return 1;
+}
+int PoseUtility::WriteOutput(vector<double>& distMagVectorReference, char *outputfilename){
+  ofstream outputfile;
+  outputfile.open(outputfilename);
+  for(std::size_t i = 0; i < distMagVectorReference.size(); i++){
+      outputfile << distMagVectorReference[i] << "\n";
+  }
+  outputfile.close();
   return 1;
 }
 

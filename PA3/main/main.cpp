@@ -22,11 +22,9 @@ int main(int argc, char* argv[]){
 		poseUtil.FindMaxes(poseUtil.vectorOfVectors);
 		poseUtil.Normalize(poseUtil.vectorOfVectors);
 		poseUtil.DistMagOutput(poseUtil.vectorOfVectors);
+		poseUtil.WriteOutput(poseUtil.distMagVector, argv[2]);
 	}else{
 		return -1;
 	}
-
-
-
 	return 1;
 }
