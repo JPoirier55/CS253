@@ -26,4 +26,5 @@ Display with pointdisplay object
 PA3:
 Go through all points and find the difference in magnitude between each pose
 Calculate magnitude across each line in the file 
-
+Write to an output file from argv[2]
+Errors caught are having a file with only 1 or less lines because you cannot calculate a distance between two points
