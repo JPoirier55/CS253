@@ -1,0 +1,29 @@
+
+Points:
+
+Valid Cases : 4 * 10 => 40 
+Input  		       Expectedoutput
+PALCA_6		       6.txt
+PALCA_66	       66.txt	
+PALCA_106	       106.txt
+similarLines.txt       similar.txt
+
+
+Error testing Cases : 4 * 10 =>40
+
+Input:
+
+singleLine.txt
+emptyfile.txt
+testcase_Invalid_emptyline.txt
+zeroinput.txt
+
+Expected output:
+      Should return "-1" Or throw an error message.
+
+Compilation/ Submission => 20
+ 
+
+
+
+
