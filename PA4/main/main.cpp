@@ -20,15 +20,15 @@ int main(int argc, char* argv[]){
 		if(istr.fail()) return Usage(argv[0]);
 		distancesObj.NormalizeFiles(istr);
 	}
-	distancesObj.DistMagOutputTwoFiles(distancesObj.allFilesPoses);
+	if(distancesObj.allFilesPoses[0].size() >= distancesObj.allFilesPoses[1].size()){
+		distancesObj.DistMagOutputTwoFiles(distancesObj.allFilesPoses[0], distancesObj.allFilesPoses[1]);
+	}else{
+		distancesObj.DistMagOutputTwoFiles(distancesObj.allFilesPoses[1], distancesObj.allFilesPoses[0]);
+	}
 
-
-		// if(dist.DistMagOutput(poseUtil.vectorOfPoses) == -1){
-		// 	return -1;
-		// }
-		// if(poseUtil.WriteOutput(dist.distMagVector, argv[2]) == -1){
-		// 	return -1;
-		// }
+	if(distancesObj.WriteOutput(distancesObj.allFilesDistMagVectors, argv[3]) == -1){
+		return -1;
+	}
 
 	return 1;
 }

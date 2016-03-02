@@ -26,8 +26,10 @@ public:
   vector<vector<double>> allFilesDistMagVectors;
 
   int NormalizeFiles(ifstream& istr);
-  int DistMagOutputTwoFiles(vector<vector<vector<Point3D>>>& allFilesPosesReference);
+  int DistMagOutputTwoFiles(vector<vector<Point3D>>& shortVector,
+      vector<vector<Point3D>>& longVector);
   int DistMagOutput(vector<vector<Point3D>>& vectorReference);
+  int WriteOutput(vector<vector<double>>& distMagVectorReference, char *outputfilename);
   int Error(string errStr, int lineNum=0, bool checkThrow=false);
 
 };

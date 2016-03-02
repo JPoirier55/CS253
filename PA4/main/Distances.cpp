@@ -23,51 +23,37 @@ int Distances::NormalizeFiles(ifstream& istr){
   return 1;
 }
 
-int Distances::DistMagOutputTwoFiles(vector<vector<vector<Point3D>>>& allFilesPosesReference){
-  int minSize = 100000;
-  int minSizeIndex = 0;
-  for(std::size_t i = 0; i < allFilesPosesReference.size(); i++){
-    if(allFilesPosesReference[i].size() < unsigned(minSize)){
-      minSize = allFilesPosesReference[i].size();
-      minSizeIndex = i;
-    }
-		cout << allFilesPosesReference[i].size() << endl;
-  }
-  for(std::size_t i = 0; i < allFilesPosesReference.size(); i++){
-    if(i != unsigned(minSizeIndex)){
+int Distances::DistMagOutputTwoFiles(vector<vector<Point3D>>& shortVector, vector<vector<Point3D>>& longVector){
 
-
-      for(std::size_t j = 0; j < allFilesPosesReference[minSizeIndex].size(); j++){
-				vector<double> tempMagVector;
-        for(std::size_t r = 0; r < allFilesPosesReference[minSizeIndex].size(); r++){
-          double overallSum = 0;
-          for(std::size_t k = 0; k < allFilesPosesReference[minSizeIndex][0].size(); k++){
-            double xMag = pow(allFilesPosesReference[minSizeIndex][j][k].X() - allFilesPosesReference[i][r][k].X(), 2);
-            double yMag = pow(allFilesPosesReference[minSizeIndex][j][k].Y() - allFilesPosesReference[i][r][k].Y(), 2);
-            double zMag = pow(allFilesPosesReference[minSizeIndex][j][k].Z() - allFilesPosesReference[i][r][k].Z(), 2);
-            overallSum += sqrt(xMag + yMag + zMag);
-          }
-          tempMagVector.push_back(overallSum);
-        }
-				allFilesDistMagVectors.push_back(tempMagVector);
+  for(std::size_t r = 0; r < shortVector.size(); r++){
+		vector<double> tempMagVector;
+    for(std::size_t j = 0; j < longVector.size(); j++){
+      double overallSum = 0;
+      for(std::size_t k = 0; k < 25; k++){
+        double xMag = pow(longVector[j][k].X() - shortVector[r][k].X(), 2);
+        double yMag = pow(longVector[j][k].Y() - shortVector[r][k].Y(), 2);
+        double zMag = pow(longVector[j][k].Z() - shortVector[r][k].Z(), 2);
+        overallSum += sqrt(xMag + yMag + zMag);
       }
-
-
+      tempMagVector.push_back(overallSum);
     }
+		allFilesDistMagVectors.push_back(tempMagVector);
   }
-  ofstream outputfile;
-  outputfile.open("output.txt");
-  for(std::size_t i = 0; i < allFilesDistMagVectors.size(); i++){
-    for(std::size_t j = 0; j < allFilesDistMagVectors[0].size(); j++){
-      outputfile << allFilesDistMagVectors[i][j] << " ";
+  return 1;
+}
+
+int Distances::WriteOutput(vector<vector<double>>& distMagVectorReference, char *outputfilename){
+	ofstream outputfile;
+  outputfile.open(outputfilename);
+  for(std::size_t i = 0; i < distMagVectorReference.size(); i++){
+    for(std::size_t j = 0; j < distMagVectorReference[0].size(); j++){
+      outputfile << distMagVectorReference[i][j] << " ";
     }
     outputfile << endl;
   }
   outputfile.close();
-
-  return 1;
+	return 1;
 }
-
 
 int Distances::DistMagOutput(vector<vector<Point3D>>& vectorReference){
 
